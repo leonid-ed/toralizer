@@ -10,7 +10,8 @@ $ make build
 
 ## Setting up
 
-In the file `toralizer.h` you can find the default proxy address and port which are customizable via the environment variable `PROXY_ADDRESS` and `PROXY_PORT`.
+In the file `toralizer.h` you can find the default proxy address and port which
+are customizable via the environment variables `PROXY_ADDRESS` and `PROXY_PORT`.
 
 ```c
 #define ENV_PROXY_ADDRESS "PROXY_ADDRESS"
@@ -20,6 +21,7 @@ In the file `toralizer.h` you can find the default proxy address and port which 
 ```
 
 Go to the bash script `toralize.sh` and update it accordingly, e.g.:
+
 ```bash
 export PROXY_ADDRESS=<proxy_ip_address>
 export PROXY_PORT=<proxy_port>

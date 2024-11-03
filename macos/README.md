@@ -10,7 +10,8 @@ $ make build
 
 ## Setting up
 
-In the file `toralizer.h` you can find the default proxy address and port which are customizable via the environment variable `PROXY_ADDRESS` and `PROXY_PORT`.
+In the file `toralizer.h` you can find the default proxy address and port which
+are customizable via the environment variables `PROXY_ADDRESS` and `PROXY_PORT`.
 
 ```c
 #define ENV_PROXY_ADDRESS "PROXY_ADDRESS"
@@ -20,6 +21,7 @@ In the file `toralizer.h` you can find the default proxy address and port which 
 ```
 
 Go to the bash script `toralize.sh` and update it accordingly, e.g.:
+
 ```bash
 export PROXY_ADDRESS=<proxy_ip_address>
 export PROXY_PORT=<proxy_port>
@@ -30,7 +32,9 @@ export DYLD_INSERT_LIBRARIES=<full_path_to_the_subdirectory>/toralize.dylib
 
 I'm using macOS version Somona 14.6.1.
 
-Nowadays, macOS have a security subsystem called `System Integrity Protection` and it prevents injecting code via `DYLD_INSERT_LIBRARIES` (the macOS equivalent of `LD_PRELOAD`) into any binary in `/bin`, `/sbin`, `/usr/bin` and `/usr/sbin`.
+Nowadays, macOS has a security subsystem called `System Integrity Protection`
+and it prevents injecting code via `DYLD_INSERT_LIBRARIES` (the macOS equivalent
+of `LD_PRELOAD`) into any binary in `/bin`, `/sbin`, `/usr/bin` and `/usr/sbin`.
 
 ```bash
 # Check the location of the utilities wget and curl
