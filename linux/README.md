@@ -11,21 +11,25 @@ $ make build
 ## Setting up
 
 In the file `toralizer.h` you can find the default proxy address and port which
-are customizable via the environment variables `PROXY_ADDRESS` and `PROXY_PORT`.
+are customizable via the environment variables `SOCKS_VER`, `PROXY_ADDRESS` and
+`PROXY_PORT`.
 
 ```c
 #define ENV_PROXY_ADDRESS "PROXY_ADDRESS"
 #define ENV_PROXY_PORT "PROXY_PORT"
+#define ENV_SOCKS_VER "SOCKS_VER"
 #define DEFAULT_PROXY_ADDRESS "127.0.0.1"
 #define DEFAULT_PROXY_PORT 9050
+#define DEFAULT_SOCKS_VER 5
 ```
 
 Go to the bash script `toralize.sh` and update it accordingly, e.g.:
 
 ```bash
+export SOCKS_VER=5
 export PROXY_ADDRESS=<proxy_ip_address>
 export PROXY_PORT=<proxy_port>
-export LD_PRELOAD=<full_path_to_the_subdirectory>/toralize.so
+export DYLD_INSERT_LIBRARIES=<full_path_to_the_subdirectory>/toralize.dylib
 ```
 
 ## Testing

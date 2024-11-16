@@ -27,14 +27,20 @@ a local Tor proxy server, thereby masking your identity.
 - **Tor Integration**: Redirecting network calls to the Tor network for
   anonymized communication.
 
-**NOTE:** Actually, it is integration with any SOCKS4 proxy server (not
-specifically Tor's local proxy) and in testing I will use a normal SOCKS4
-[proxy server `dante`](https://github.com/notpeter/dante) running locally or
-remotely as it is shown in the picture below (in the scenario 2):
+**NOTE:** Actually, it is integration with any SOCKS4 or SOCKS5 proxy server
+(not specifically Tor's local proxy) and in testing I use ordinary SOCKS4/SOCKS5
+proxy servers:
+
+- [`dante`](https://github.com/notpeter/dante) running locally or remotely
+  (please keep in mind that the communication is not encrypted in this case)
+- SSH tunnel to a remote machine which ensures the encryption of the traffic
+  between your side and the proxy
 
 ![](20241103103556.png)
 
-## Setting up SOCKS4 proxy server
+## Setting up SOCKS4/SOCKS5 proxy server
+
+### Dante proxy server
 
 It is better to run your proxy server on some random port to make it harder for
 be found and used by someone else on the Internet accidentally:
@@ -60,6 +66,14 @@ $ curl -v --socks4 127.0.0.1:61298 "ifconfig.so"
 * SOCKS4 non-blocking resolve of ifconfig.so
 * Host ifconfig.so:80 was resolved.
 ...
+```
+
+### SSH tunnel
+
+A SSH tunnel to a remote machine can be started via the following command:
+
+```bash
+$ ssh -D 62494 -N <address>
 ```
 
 If everything is fine, then go to `linux` and `macos` subdirectories to build

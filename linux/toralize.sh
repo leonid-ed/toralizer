@@ -1,5 +1,6 @@
 #!/bin/env bash
 
+export SOCKS_VER=5
 export PROXY_ADDRESS=192.168.0.101
 export PROXY_PORT=61298
 export LD_PRELOAD=`pwd`/toralize.so

@@ -13,7 +13,7 @@ build_connect_test: connect_test.c
 
 .PHONY: build # Build the shared library
 build: toralize.c toralize.h
-	$(CC) toralize.c -shared -ldl -fPIC -Wall -Wextra -errors -o $(shared_lib)
+	$(CC) toralize.c -shared -ldl -fPIC -Wall -Wextra -o $(shared_lib)
 
 .PHONY: clean # Clean the building directory
 clean:
